@@ -1,14 +1,18 @@
-def sockMerchant(n,ar):
-   dic ={}
-   pair = 0
-   for i in ar:
-       if i not in dic:
-           dic[i] = 1
-       else:
-           dic[i] += 1
-           if dic[i] % 2 == 0:
-               pair+=1
-   return pair
+#You will be given an array of integers and a target value. Determine the number of pairs of 
+#array elements that have a difference equal to a target value.
+def pairs(k,arr):
+    count = 0
+    i, j = 0,1
+    arr.sort()
+    while j < len(arr):
+        diff = arr[j]-arr[i]
+        if diff == k:
+            count += 1
+            j+= 1
+        elif diff>k:
+            i+=1
+        elif diff< k:
+            j +=1
+    return count
 
-print(sockMerchant(9,[10, 20, 20, 10, 10, 30, 50, 10, 20] ))
-
+print(pairs(2,[1,5,3,4,2]))
